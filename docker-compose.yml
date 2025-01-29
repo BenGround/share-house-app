@@ -47,8 +47,10 @@ services:
       context: ./nginx
     ports:
       - "80:80"
+      - "443:443"
     volumes:
       - frontend-dist:/usr/share/nginx/html
+      - /bin/ssl:/etc/nginx/ssl:ro
     depends_on:
       - frontend
 

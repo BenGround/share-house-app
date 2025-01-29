@@ -31,6 +31,6 @@ echo "REACT_APP_API_URL=http://localhost:3000/" > "$FRONTEND_ENV_FILE"
 echo "NODE_ENV=production" >> "$FRONTEND_ENV_FILE"
 
 echo "Building and running Docker containers..."
-docker-compose up -d --build
+DOCKER_BUILDKIT=1 docker-compose up -d --build
 
 echo "Project setup complete!"

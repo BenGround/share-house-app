@@ -64,13 +64,16 @@ services:
     ports:
       - 9000:9000
       - 9001:9001
+    volumes:
+      - /bin/ssl-minio/private.key:/root/.minio/certs/private.key
+      - /bin/ssl-minio/public.crt:/root/.minio/certs/public.crt
     environment:
-      MINIO_ROOT_USER: ${MINIO_USER} 
-      MINIO_ROOT_PASSWORD: ${MINIO_PASSWORD} 
-      MINIO_ADDRESS: ':9000'
-      MINIO_CONSOLE_ADDRESS: ':9001'
-    command: minio server /minio_data
+      MINIO_ROOT_USER: ${MINIO_USER}
+      MINIO_ROOT_PASSWORD: ${MINIO_PASSWORD}
+      MINIO_SERVER_URL: ${FRONT_URL}
+    command: server --address ":9000" --console-address ":9001" /minio-data
 
 volumes:
   database:
   frontend-dist:
+  minio-data:

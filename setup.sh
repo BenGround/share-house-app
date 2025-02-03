@@ -27,8 +27,12 @@ echo "Creating .env file for frontend..."
 
 FRONTEND_ENV_FILE="$PROJECT_ROOT/frontend/.env"
 
-echo "REACT_APP_API_URL=http://localhost:3000/" > "$FRONTEND_ENV_FILE"
+echo "REACT_APP_API_URL=https://social-residence-shakujiikoen.online/api" > "$FRONTEND_ENV_FILE"
+
+echo "REACT_APP_WS_URL=https://social-residence-shakujiikoen.online" >> "$FRONTEND_ENV_FILE"
+
 echo "NODE_ENV=production" >> "$FRONTEND_ENV_FILE"
+
 
 echo "Building and running Docker containers..."
 DOCKER_BUILDKIT=1 docker-compose up -d --build

@@ -54,7 +54,6 @@ services:
       - "443:443"
     volumes:
       - frontend-dist:/usr/share/nginx/html
-      - /bin/ssl:/etc/nginx/ssl:ro
     depends_on:
       - frontend
 
@@ -64,9 +63,6 @@ services:
     ports:
       - 9000:9000
       - 9001:9001
-    volumes:
-      - /bin/ssl-minio/private.key:/root/.minio/certs/private.key
-      - /bin/ssl-minio/public.crt:/root/.minio/certs/public.crt
     environment:
       MINIO_ROOT_USER: ${MINIO_USER}
       MINIO_ROOT_PASSWORD: ${MINIO_PASSWORD}
